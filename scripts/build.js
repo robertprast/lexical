@@ -24,6 +24,14 @@ const {exec} = require('child-process-promise');
 const {packagesManager} = require('./shared/packagesManager');
 const npmToWwwName = require('./www/npmToWwwName');
 
+exec('git checkout -b my-new-branch').catch((err) => {
+  console.error('Error creating branch: ', err);
+});
+
+exec('git push origin my-new-branch').catch((err) => {
+  console.error('Error pushing branch: ', err);
+});
+
 const headerTemplate = fs.readFileSync(
   path.resolve(__dirname, 'www', 'headerTemplate.js'),
   'utf8',
